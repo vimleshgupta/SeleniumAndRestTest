@@ -19,8 +19,8 @@ public class RestClientSteps {
     String url;
     List<Country> countries;
 
-    @Given("^I have countries sevice url: (.*)$")
-    public void i_have_countries_sevice_url_https_restcountries_eu_rest_v_all(String url) throws Throwable {
+    @Given("^I have countries service url: (.*)$")
+    public void i_have_countries_service_url_https_restcountries_eu_rest_v_all(String url) throws Throwable {
         this.url = url;
     }
 
@@ -33,7 +33,12 @@ public class RestClientSteps {
         }.getType());
     }
 
-    @Then("^I verify following country details$")
+    @Given("^I see total (\\d+) countries$")
+    public void i_see_total_20_countries(int total) throws Throwable {
+        Assert.assertEquals(total, countries.size());
+    }
+
+    @Then("^I verify following country's details$")
     public void i_verify_following_country_details(Map<String, String> data) throws Throwable {
         for (Country country : countries) {
             if (country.getName().equals(data.get("name"))) {

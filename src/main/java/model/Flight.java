@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by cts1 on 22/1/18.
- */
 public class Flight {
     private String title;
     private String departureTime;

@@ -1,9 +1,15 @@
 Feature: To test countries service
 
-  Scenario: Verify list of countries
-    Given I have countries sevice url: https://restcountries.eu/rest/v1/all
+  Background:
+    Given I have countries service url: https://restcountries.eu/rest/v1/all
+
+  Scenario: Verify total number of countries
     When I get list of all the countries
-    Then I verify following country details
+    Then I see total 250 countries
+
+  Scenario: Verify a country's details
+    When I get list of all the countries
+    Then I verify following country's details
       | name           | India                                            |
       | topLevelDomain | [.in]                                            |
       | alpha2Code     | IN                                               |

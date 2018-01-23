@@ -1,11 +1,11 @@
 package model;
 
 public class ContactDetails {
-    String name;
-    String email;
-    String country;
-    String mobile;
-    String address;
+    private String name;
+    private String email;
+    private String country;
+    private String mobile;
+    private String address;
 
     public ContactDetails(String name, String email, String country, String mobile, String address) {
         this.name = name;

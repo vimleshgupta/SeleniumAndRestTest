@@ -4,10 +4,10 @@ package model;
  * Created by cts1 on 22/1/18.
  */
 public class Flight {
-    String title;
-    String departureTime;
-    String arrivalTime;
-    String fare;
+    private String title;
+    private String departureTime;
+    private String arrivalTime;
+    private String fare;
 
     public Flight(String title, String departureTime, String arrivalTime, String fare) {
         this.title = title;

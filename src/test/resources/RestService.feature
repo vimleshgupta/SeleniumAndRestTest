@@ -1,15 +1,16 @@
 Feature: To test countries service
 
-  Background:
-    Given I have countries service url: https://restcountries.eu/rest/v1/all
-
   Scenario: Verify total number of countries
-    When I get list of all the countries
-    Then I see total 250 countries
+    Given I have countries service url to get all countries
+    When I request to get details
+    Then I get status code as 200
+    And I get total 250 countries
 
   Scenario: Verify a country's details
-    When I get list of all the countries
-    Then I verify following country's details
+    Given I have countries service url to get india country details
+    When I request to get details
+    Then I get status code as 200
+    And I verify following country's details
       | name           | India                                            |
       | topLevelDomain | [.in]                                            |
       | alpha2Code     | IN                                               |
@@ -32,3 +33,8 @@ Feature: To test countries service
       | languages      | [hi, en]                                         |
       | translations   | {de=Indien, es=India, fr=Inde, ja=インド, it=India} |
       | relevance      | 3                                                |
+
+  Scenario: Verify when user sends a request to get a country which does not exist
+    Given I have countries service url to get aassddff country details
+    When I request to get details
+    Then I get status code as 404

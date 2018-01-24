@@ -27,7 +27,7 @@ public class Browser {
         return context;
     }
 
-    public void navigateToHomePage() {
-        driver.get(context.getHotUrl());
+    public void navigateToHomePage(String url) {
+        driver.get(url);
     }
 }

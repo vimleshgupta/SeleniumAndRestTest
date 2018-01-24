@@ -15,14 +15,15 @@ public class HomePageSteps extends CommonInitializationSteps {
 
     @Given("^I navigate to home page$")
     public void i_navigate_to_home_page() throws Throwable {
-        browser().navigateToHomePage();
+        String url = getProperties().getProperty("easyjet.url");
+        browser().navigateToHomePage(url);
         homePage = HomePage.newPage(browser().getDriver());
         homePage.closeCookiePolicySection();
     }
 
     @When("^I enter following details for flight$")
     public void i_enter_following_details_for_flight(DataTable data) throws Throwable {
-        for (List<String> row: data.raw()) {
+        for (List<String> row : data.raw()) {
             String field = row.get(0);
             String value = row.get(1);
             switch (field) {
@@ -58,7 +59,7 @@ public class HomePageSteps extends CommonInitializationSteps {
 
     @Then("^I see (.*) error$")
     public void i_see_destination_error_Please_select_a_destination(String field) throws Throwable {
-        if("destination".equals(field)) {
+        if ("destination".equals(field)) {
             Assert.assertTrue(homePage.flightTab().isDestinationErrorDisplayed());
         } else if ("departure date".equals(field)) {
             Assert.assertTrue(homePage.flightTab().isDepartureDateErrorDisplayed());

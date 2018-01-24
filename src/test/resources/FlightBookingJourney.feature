@@ -1,7 +1,9 @@
 Feature: To test flight booking journey
 
-  Scenario: Create a basket and verify basket, booker's and passenger details
+  Background:
     Given I navigate to home page
+
+  Scenario: Create a basket and verify basket, booker's and passenger details
     When I enter following details for flight
       | From          | Luton      |
       | To            | Alicante   |
@@ -14,7 +16,7 @@ Feature: To test flight booking journey
     And I pick first available flight from return route on 24 Feb
     Then I see selected departure flight details in the basket on Thu 22nd Feb
     And I see selected return flight details in the basket on Sat 24th Feb
-    And I click on continue button in the basket section
+    When I click on continue button in the basket section
     And I skip the Seat selection page
     And I skip the Seat selection page
     And I skip the Hold luggage & sports equipment page
@@ -55,7 +57,6 @@ Feature: To test flight booking journey
     And I see selected return flight details in the basket on Sat 24th Feb
 
   Scenario: Verify error scenarios
-    Given I navigate to home page
     When I click on show flights button
     Then I see destination error
     When I enter following details for flight
